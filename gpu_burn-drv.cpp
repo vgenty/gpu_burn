@@ -28,7 +28,7 @@
  */
 
 #define SIZE 1024ul // Matrices are SIZE*SIZE..  1024^2 should be efficiently implemented in CUBLAS
-#define USEMEM 0.9 // Try to allocate 90% of memory
+#define USEMEM 0.95 // Try to allocate 90% of memory
 
 #include <cstdio>
 #include <string>
@@ -578,11 +578,12 @@ int main(int argc, char **argv) {
     useDoubles = true;
     thisParam++;
   }
+
   if (argc-thisParam < 2)
     printf("Run length not specified in the command line.  Burning for 10 secs\n");
   else 
     runLength = atoi(argv[1+thisParam]);
-
+  
   if (useDoubles)
     launch<double>(runLength, useDoubles);
   else
